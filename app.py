@@ -1,6 +1,10 @@
 import streamlit as st
 import json
 import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from src.core.orchestrator import KasparroOrchestrator
 
 # Basic setup
@@ -18,58 +22,63 @@ if st.button("Generate Assets"):
         status_box.text("Initializing pipeline...")
         
         # 1. Run the backend
-        # We wrap this in a spinner so the UI doesn't freeze visually
         with st.spinner("Running AI Agents..."):
-            app = KasparroOrchestrator()
-            app.start_pipeline(raw_text)
-        
-        status_box.text("Pipeline finished. Loading results...")
-
-        # 2. Read the generated files directly from output folder
-        # This is a simple way to get data without changing backend code
-        output_dir = "data/output"
-        
-        try:
-            with open(f"{output_dir}/product_page.json", "r", encoding="utf-8") as f:
-                prod_data = json.load(f)
-            
-            with open(f"{output_dir}/faq.json", "r", encoding="utf-8") as f:
-                faq_data = json.load(f)
-
-            with open(f"{output_dir}/comparison_page.json", "r", encoding="utf-8") as f:
-                comp_data = json.load(f)
-
-            # 3. Display Results
-            st.success("Generation Complete")
-            
-            tab1, tab2, tab3 = st.tabs(["Product Page", "FAQs", "Competitor Analysis"])
-
-            with tab1:
-                st.subheader(prod_data['page_meta']['title'])
+            try:
+                app = KasparroOrchestrator()
+                # We run the pipeline (which saves the files to data/output)
+                app.start_pipeline(raw_text)
+                status_box.text("Pipeline finished. Loading results...")
                 
-                col1, col2 = st.columns(2)
-                with col1:
-                    st.markdown(f"**Headline:** {prod_data['hero_section']['headline']}")
-                    st.markdown(f"**Price:** {prod_data['hero_section']['price_display']}")
+                # 2. Read the generated files directly from output folder
+                output_dir = "data/output"
                 
-                with col2:
-                    st.markdown("**Ingredients:**")
-                    st.write(", ".join(prod_data['details_section']['ingredients_list']))
-
-                with st.expander("View Full JSON"):
-                    st.json(prod_data)
-
-            with tab2:
-                for item in faq_data['faqs']:
-                    with st.expander(f"{item['question']}"):
-                        st.write(item['answer'])
-            
-            with tab3:
-                st.subheader("Verdict")
-                st.write(comp_data['verdict'])
+                with open(f"{output_dir}/product_page.json", "r", encoding="utf-8") as f:
+                    prod_data = json.load(f)
                 
-                st.markdown("### Comparison Table")
-                st.dataframe(comp_data['comparison_table'])
+                with open(f"{output_dir}/faq.json", "r", encoding="utf-8") as f:
+                    faq_data = json.load(f)
 
-        except Exception as e:
-            st.error(f"Error loading output files: {e}")
+                with open(f"{output_dir}/comparison_page.json", "r", encoding="utf-8") as f:
+                    comp_data = json.load(f)
+
+                # 3. Display Results
+                st.success("Generation Complete")
+                
+                tab1, tab2, tab3 = st.tabs(["Product Page", "FAQs", "Competitor Analysis"])
+
+                with tab1:
+                    st.subheader(prod_data.get('page_meta', {}).get('title', 'Product Page'))
+                    
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        hero = prod_data.get('hero_section', {})
+                        st.markdown(f"**Headline:** {hero.get('headline', 'N/A')}")
+                        st.markdown(f"**Price:** {hero.get('price_display', 'N/A')}")
+                    
+                    with col2:
+                        st.markdown("**Ingredients:**")
+                        ingredients = prod_data.get('details_section', {}).get('ingredients_list', [])
+                        st.write(", ".join(ingredients))
+
+                    with st.expander("View Full JSON"):
+                        st.json(prod_data)
+
+                with tab2:
+                    faqs = faq_data.get('faqs', [])
+                    for item in faqs:
+                        with st.expander(f"{item.get('question', 'Q')}"):
+                            st.write(item.get('answer', 'A'))
+                
+                with tab3:
+                    st.subheader("Verdict")
+                    st.write(comp_data.get('verdict', 'No verdict'))
+                    
+                    st.markdown("### Comparison Table")
+                    # Check if comparison_table exists and is valid
+                    if 'comparison_table' in comp_data:
+                        st.dataframe(comp_data['comparison_table'])
+                    else:
+                        st.json(comp_data)
+
+            except Exception as e:
+                st.error(f"Error during execution: {str(e)}")

@@ -1,0 +1,9 @@
+# Secrets
+.env
+
+# Python junk
+__pycache__/
+*.pyc
+
+# Generated data (optional, keeps repo clean)
+data/output/*.json
