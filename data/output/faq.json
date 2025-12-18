@@ -1,0 +1,79 @@
+{
+  "faqs": [
+    {
+      "answer": "Yes, it is generally safe, but individuals with sensitive skin might experience a mild tingling sensation upon initial use.",
+      "category": "Safety & Sensitivity",
+      "question": "Is GlowBoost Vitamin C Serum safe for sensitive skin?"
+    },
+    {
+      "answer": "A mild tingling is normal for sensitive skin. If it's persistent or severe, reduce usage frequency or consult a dermatologist.",
+      "category": "Safety & Sensitivity",
+      "question": "What should I do if I experience tingling after applying the serum?"
+    },
+    {
+      "answer": "The most common effect is mild tingling for sensitive skin. Always patch test first, and discontinue use if irritation occurs.",
+      "category": "Safety & Sensitivity",
+      "question": "Are there any known side effects or precautions?"
+    },
+    {
+      "answer": "It is recommended to apply the serum once daily, specifically in the morning.",
+      "category": "Usage Routine",
+      "question": "How often should I use the GlowBoost Vitamin C Serum?"
+    },
+    {
+      "answer": "Apply 2\u20133 drops of the serum for optimal coverage and efficacy.",
+      "category": "Usage Routine",
+      "question": "What is the correct amount of serum to apply?"
+    },
+    {
+      "answer": "Apply the serum in the morning, typically after cleansing and toning, and before applying sunscreen.",
+      "category": "Usage Routine",
+      "question": "When in my skincare routine should I apply the serum?"
+    },
+    {
+      "answer": "10% Vitamin C helps brighten skin, reduce hyperpigmentation, and provides antioxidant protection against environmental damage.",
+      "category": "Ingredient Benefits",
+      "question": "What are the main benefits of 10% Vitamin C in this serum?"
+    },
+    {
+      "answer": "Hyaluronic Acid provides intense hydration, plumping the skin and helping to reduce the appearance of fine lines by retaining moisture.",
+      "category": "Ingredient Benefits",
+      "question": "How does Hyaluronic Acid contribute to the serum's effectiveness?"
+    },
+    {
+      "answer": "Together, Vitamin C brightens and protects while Hyaluronic Acid deeply hydrates, resulting in a radiant, plump, and healthy-looking complexion.",
+      "category": "Ingredient Benefits",
+      "question": "Can you explain the combined benefits of Vitamin C and Hyaluronic Acid?"
+    },
+    {
+      "answer": "Store the serum in a cool, dark place away from direct sunlight and extreme temperatures to prevent oxidation of Vitamin C.",
+      "category": "Storage",
+      "question": "How should I store the GlowBoost Vitamin C Serum to maintain its efficacy?"
+    },
+    {
+      "answer": "Typically, once opened, Vitamin C serums are best used within 6-12 months, but always check the PAO (Period After Opening) symbol on the packaging.",
+      "category": "Storage",
+      "question": "What is the shelf life of the serum once opened?"
+    },
+    {
+      "answer": "While not strictly necessary, storing it in the refrigerator can help prolong the stability and freshness of the Vitamin C.",
+      "category": "Storage",
+      "question": "Can I store the serum in the refrigerator?"
+    },
+    {
+      "answer": "Results can vary, but many users report seeing improvements in skin brightness and hydration within 4-8 weeks of consistent use.",
+      "category": "Expected Results",
+      "question": "How long does it take to see results from using GlowBoost Vitamin C Serum?"
+    },
+    {
+      "answer": "You can expect improved skin brightness, more even skin tone, reduced appearance of dark spots, and enhanced hydration and plumpness.",
+      "category": "Expected Results",
+      "question": "What kind of improvements can I expect from using this serum?"
+    },
+    {
+      "answer": "Yes, the 10% Vitamin C is specifically formulated to target and help reduce the appearance of dark spots and promote a more even skin tone.",
+      "category": "Expected Results",
+      "question": "Will this serum help with dark spots or uneven skin tone?"
+    }
+  ]
+}
